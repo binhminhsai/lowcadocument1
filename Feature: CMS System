@@ -1,0 +1,88 @@
+Target:
+
+⇒ Feature cho hoat dong Onboarding nguoi dung trong vong 1 thang (ten cac tro choi + cach hoat dong + phan thuong cua user)
+
+Buseness Requirement 1: Nguời dùng walk around cách hoạt động của Web và được hướng dẫn mời ít nhất 1 bạn dùng tính năng Current pick sẽ được giảm giá sâu (25% trên tổng bill)
+Business Requirement 2: Người dùng thấy lộ trình cho tân thủ trong 1 tháng và benefit mình có thể đạt được
+=> UC001: Hanh trinh tân thủ có độ dài trong 1 tháng
+
+BRule001: Trong 1 tháng người dùng action theo plan thì sẽ lên được level 4
+
+BRule002: Neu khong action theo plan thì mỗi action user sẽ không được khi nhận điểm thưởng để đổi quà
+
+BRule003: Level 1 thì người dùng thực hiện 1 hoạt động để đi từ 0 đến level 1, level 2 thì thực hiện 2 hoạt động từ level 1 lên 2, level 3 thì thực hiện 3 hành động để lên level từ 2 đến 3, level 4 thì phải thực hiện 4 hành động để lên từ level 3 đến 4
+
+=> UC002: Người dùng sẽ được nhận quà ngay lập tức theo từng cột mốc, quà tặng theo level là voucher giảm giá lần 1 trên tổng bill (là hành động dùng tính năng Current pick bên trên) -> mua 1 tặng 1 (1 món bất kì) -> bữa ăn miễn phí tặng bạn bè -> giảm giá nhóm lớn (level 1 đến level 4)
+
+=> UC003: Ngoài ra trong hành trình để đạt được những level lớn (từ level 1 đến level 4) thì có những hoạt động nhỏ để tăng thanh kinh nghiệp để lên từng nấc level, thì khi thực hiện đều sẽ được tặng xu, và xu có thể quy đổi ra quà
+
+=> BRule001: So xu nguoi dung tich luy cho tung nhiem vu dung de doi qua
+
+=> BRule002: Đổi xu Nhóm Tiết kiệm (200 - 500 Xu):
+
+Logic:
+
+Freeship đơn vỉa hè (bán kính 2km): 300 Xu.
+
+Voucher giảm 10k cho đơn từ 50k: 400 Xu.
+
+Thẻ "Thêm Topping miễn phí": 200 Xu (Hợp tác với các xe đẩy trà sữa/bánh tráng).
+
+=> BRule003: Đổi xu Nhóm Trải nghiệm (600 - 1.500 Xu):
+
+Logic:
+
+Thẻ "Ưu tiên xử lý đơn": 600 Xu (Dành cho giờ cao điểm).
+
+Gói "Giảm giá quán hot" trong 48h: 800 Xu (Giảm giá sâu các bill trong top list cửa hàng trong LOWCA ).
+
+Voucher giảm 30k cho nhóm 3 người: 1.500 Xu.
+
+=> BRule004: Đổi xu Nhóm Quà tặng/Đặc quyền (2.000 Xu trở lên):
+
+Logic:
+
+Vật phẩm độc quyền (Ly/Túi tote Lowca): 5.000 Xu.
+
+Thẻ VIP "Lowca Star": 2.000 Xu (Hiển thị badge đặc biệt trên profile và được ưu tiên tham gia các buổi offline thử món mới).
+
+Business Requirement 3: Người dùng thực hiện hành các hành động trong plan của LOWCA lên sẵn
+=> UC001: hoan thanh bua an o quan dau tien khi tim quan và dat mon tren lowca
+
+BRule001: Sử dụng tính năng Current Pick để tìm quán và đặt món thành công -> Mốc level 1: Voucher 25%
+
+=> UC002: hoàn thành 2 nhiệm vụ để lên level 2
+
+BRule001: Nhiem vu 1: Mời 1 bạn mới (Referral) -> 100 Xu
+
+BRule002: Nhiem vu 2 (nhan qua level 2): Review quán kèm ảnh -> Mốc level 2: Voucher Mua 1 Tặng 1
+
+=> UC003: hoàn thành 3 nhiệm vụ để lên level 3
+
+BRule001: Nhiem vu 1: Hoàn thành 2 đơn/tuần -> 80 Xu
+
+BRule002: Nhiem vu 2: Check-in tại 3 quán khác nhau -> 60 xu
+
+BRule003: Nhiem vu 3 (nhan qua level 3): Chia sẻ Social Media -> Mã bữa ăn miễn phí (tặng bạn)
+
+=> UC004: hoành thành 4 nhiệm vụ để lên level 4
+
+BRule001: Nhiem vu 1: Daily login 7 ngày: 70 xu
+
+BRule002: Nhiem vu 2: Viết 3 đánh giá chất lượng: 150 xu
+
+BRule003: Nhiem vu 3: Mời thêm 2 bạn mới: 200 xu
+
+BRule004: Nhiem vu 4 (nhan qua level 4): Tích lũy đủ 500 Xu -> Voucher Giảm giá nhóm 40%
+
+=> UC005: Cách kiếm Xu (Earning Rules):
+
+Logic:
+
+Check-in vị trí: +20 xu/lần.
+
+Đánh giá quán: +50 xu/bài (thêm ảnh +20 xu).
+
+Đặt món thành công: +30 xu/đơn hàng.
+
+Bạn bè đặt món từ link chia sẻ: +100 xu/lượt.
