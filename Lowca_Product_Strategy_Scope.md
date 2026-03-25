@@ -14,6 +14,54 @@
 - **Mục tiêu:** Tăng DAU (Daily Active Users), tạo thói quen (Habit-forming), rút ngắn hành trình On-site Verification và điều hướng luồng tiền của khách hàng.
 - **Cơ chế cốt lõi (Core Engine):** Hệ thống là một Rule-Engine. System tạo Quest -> User nhận Quest -> User thực hiện Key Action -> System Validate -> Dispatch Reward (Voucher/Lowca Coin).
 - **Tính linh hoạt (Scalability):** Chìa khóa của tính năng này là Marketing/Admin phải tự tạo được quest linh hoạt (vd: "Mua 2 ly trà đá", "Check-in tại 1 xe đẩy trong top 10") thông qua CMS, *tuyệt đối không để Dev phải hardcode* mỗi khi có campaign mới.
+Ví dụ luồng này hoạt động: Nhân dịp 30/04, Lowca ra campaign "Check-in 3 quán có trang trí dạng lịch sử như Cà phê Đỗ Phủ - Cơm tấm Đại Hàn, Cộng coffee, highland Dinh độc lập, hoặc các quán có trang trí chủ đề Việt Nam" thì sẽ được đổi voucher áo dài hoặc tượng danh lam thắng cảnh Sài Gòn" hoặc đổi ra xu để đổi quà trong cửa hàng.
+=> Bước 1: Admin thêm quà tặng vào cửa hàng, option là đổi thường hay dịp đặc biệt
+=> Bước 2: Admin Thêm điều kiện để đổi lấy quà
+- Rule 1: Nếu là quà theo dạng đổi xu thường thì admin chọn type quà phù hợp [{loai_tiet_kiem}; {loai_trai_nghiem}; {loai_dac_quyen}] với lượng xu phù hợp
+- Rule 2: Nếu là quà theo dạng dịp đặc biệt thì admin chọn type {loai_dac_biet} loại này khách hàng chỉ được nhận khi thực hiện nhiệm vụ trong một dịp và quãng thời gian nhất định
+=> Bước 3: Nếu là dạng quà đặc biệt thì Admin tạo nhiệm vụ để người chơi thực hiện để đổi quà theo Rule sau:
+Để Admin không cần Dev, CMS nên được thiết kế theo dạng IF - THEN:
+IF (Condition Set):
+Action_Type: [Check-in (người dùng chụp ảnh post lên social, post lên profile Lowca) / Payment / Review / Referral]
+Scope: [Specific_Vendor_ID / Category_Tag (Loại quán ăn, Taste, style quán) / Area_ID]
+Value_Requirement: [Số lượng người >= n /Số lượng quán ≥ n / 
+a mount (số lượng chữ, hình ảnh trong review, lượt tương tác...
+giá tiền, khoảng cách)  >= x or < =x (km)]
+Time_Constraint: [Start_Date / End_Date / Specific_Hours / Lặp lại theo ngày]
+
+THEN (Reward Set):
+Reward_Type: [Special_Item / Coin / Voucher_Code]
+=> Total_Stock: Giới hạn tổng số lượng quà (ví dụ: chỉ có 100 áo dài).
+=> Winner_Selection: [First come first served (Ai đến trước nhận trước)] hoặc [Lucky Draw (Quay số) hoặc không giới hạn].
+Exclusivity: Chỉ những User đạt Level x hoặc có Badge y mới được tham gia Quest này để tăng tính "Đặc quyền".
+=> Bước 4: Admin tạo UI/UX cho user của Lowca thấy sự kiện
+***Phần A***: Admin chỉnh sửa Visual & Header (Kích thích thị giác) cho phần thông báo hiện ra đầu tiên khi user vào LOWCA app
+Business Requirement:
+- Chỉnh Hero Image: Ảnh quà tặng đặc biệt (ví dụ: Hình ảnh chiếc Áo dài hoặc Tượng danh lam thắng cảnh).
+- Chỉnh vị trí Countdown Timer (Time Constraint): Đồng hồ đếm ngược thời gian còn lại của sự kiện (Ví dụ: "Còn 2 ngày 14 giờ"). => Theo Start và End day
+- Exclusivity Badge: Nếu Quest chỉ dành cho Level cao, hiển thị badge: "Dành riêng cho Thành viên Vàng trở lên".
+***Phần B***: Progress Bar (Thanh tiến độ - Logic Bước 3)
+Business Requirement:
+- Nhấn vào banner thì ra trang đánh giá progress, và trang profile có page user xem lại progress
+- Thanh tiến độ trực quan: Dựa trên Value_Requirement.
+*****Ví dụ: Nếu quest yêu cầu check-in 3 quán, layout sẽ hiện 3 vòng tròn check-list. Vòng tròn nào đã xong sẽ sáng lên hoặc có dấu tích xanh.*****
+- Status Label: "Đã hoàn thành 1/3 quán thuộc phong cách #SàiGònXưa".
+***Phần C: Instruction & Map Scope (Hướng dẫn & Phạm vi)***
+Business Requirement:
+- Thuật toán đề xuất quán: Danh sách quán gợi ý: Dựa trên Category_Tag hoặc Area_ID. Hiển thị dưới dạng danh sách cuộn các quán ăn thỏa điều kiện để User nhấn vào chỉ đường ngay.
+- Nút Action chính: Tùy vào Action_Type mà nút sẽ thay đổi khi user đang trong page cuả một vendor:
+Rule 1: Nếu là Check-in: Hiện lên Nút "Chụp ảnh & Check-in ngay share cho bạn bè cùng sử dụng Lowca hoặc lên social".
+Rule 2: Nếu là Review: Hiện lên Nút "Viết cảm nhận".
+Rule 3: Nếu là Thanh toán thì hiện lên Nút "Đặt món ngay"
+***Phần D: Reward Info (Thông tin phần thưởng - Logic THEN)***
+- Chỉnh sửa lable: Số lượng còn lại (Total Stock): Một dòng chữ nhỏ: "Chỉ còn 15/100 quà tặng". Điều này đánh vào tâm lý sợ bỏ lỡ (FOMO).
+- Chỉnh sửa lable: Cơ chế nhận quà (Winner Selection): "Quà tặng sẽ trao cho 100 người hoàn thành sớm nhất".
+=> Bước 5: Admin preview với góc nhìn người dùng và Admin setup lịch Launch sự kiện và có thể chỉnh sửa bất kỳ lúc nào
+
+Đó là luồng User thực hiện thử thách, sau đó mới đưọc nhận quà, còn Admin thì setup quà
+trước trong Dashboard rồi sau đó mới tạo nhiệm vụ
+
+[Link tham khảo]:{https://whimsical.com/minh-s-workspace7334/rule-engine-flexible-YMgf6DVnjXkeoHe8pDkEGn}
 
 ### 2. Khung Requirement dành cho BA (Scope):
 - **CMS/Admin Side:** Tool tạo Quest (Action metrics, Condition trigger, Reward value, Budget limit, Timeline).
