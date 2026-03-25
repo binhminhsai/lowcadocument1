@@ -169,7 +169,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 ---
 ## 7. Tham khảo UI/UX đề xuất layout:
 
-## 7.1. ADMIN DASHBOARD (Desktop View)
+### 7.1. ADMIN DASHBOARD (Desktop View)
 **Mục tiêu:** Cấu hình hệ thống Rule-Engine theo dạng Form-Builder.
 
 ---
@@ -191,7 +191,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-## 7.2. USER APP INTERFACE (Mobile View)
+### 7.2. USER APP INTERFACE (Mobile View)
 **Mục tiêu:** Tạo trải nghiệm Game- hóa, thúc đẩy User thực hiện nhiệm vụ.
 
 ### A. Screen: Banner thông báo nhiệm vụ
@@ -216,7 +216,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-## 7.3. FRONTEND TECHNICAL SPEC (Dành cho Dev)
+### 7.3. FRONTEND TECHNICAL SPEC (Dành cho Dev)
 
 ### Component State Schema
 | Component | Props | States |
@@ -232,8 +232,8 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-## 7.4. MOCK DATA
-```json
+### 7.4. MOCK DATA
+```
 {
   "quest_id": "LC_SAIGON_01",
   "config": {
@@ -247,11 +247,11 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
     "fomo_text": "Chỉ còn 15 phần quà cuối cùng!"
   }
 }
-
+```
 
 ---
 
-## Use Case 2: Tính năng Current Pick (Đặt món nhóm)
+# Use Case 2: Tính năng Current Pick (Đặt món nhóm)
 **[💡 Core Model: Real-time Synchronized Cart & Conflict Handling]**
 
 ### 1. Product Strategy (Chiến lược sản phẩm):
@@ -263,7 +263,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 - **Cơ sở hạ tầng (Backend):** Sử dụng Web-socket hoặc Polling để giỏ hàng nhảy số trực tiếp trên máy của tất cả thành viên khi có ai đó add món.
 - **UX/UI Side:** Trạng thái "Ready" (Sẵn sàng chốt), UI chia tiền Bill split (Ai ăn gì trả nấy, hoặc chia đều).
 
-### 3. Socratic Gate (Các Business Rules BA cần làm rõ với PM):
+## 3. Socratic Gate (Các Business Rules BA cần làm rõ với PM):
 1. **Quyền thanh toán (Payment Flow):** Có mấy luồng thanh toán? *Luồng 1:* Chỉ Host được thanh toán giùm cả nhóm. *Luồng 2:* Từng người tự nạp thanh toán phần của mình vào hệ thống, xong hết thì app mới báo cho Vendor làm món?
 
 ---
