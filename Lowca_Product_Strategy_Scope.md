@@ -216,7 +216,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-## 🛠️ 3. FRONTEND TECHNICAL SPEC (Dành cho Dev)
+## 7.3. FRONTEND TECHNICAL SPEC (Dành cho Dev)
 
 ### Component State Schema
 | Component | Props | States |
@@ -232,7 +232,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-## 📡 4. MOCK DATA
+## 7.4. MOCK DATA
 ```json
 {
   "quest_id": "LC_SAIGON_01",
