@@ -41,48 +41,44 @@ Hệ thống vận hành theo cấu trúc logic **IF - THEN**:
 - **Winner_Selection:** `First come first served` (Ai đến trước nhận trước) hoặc `Lucky Draw`.
 - **Exclusivity:** Chỉ User đạt **Level x** hoặc có **Badge y** mới được tham gia.
 
----
-
-## 3. Cấu hình hiển thị (UI/UX Configuration)
+### Bước 3. Cấu hình hiển thị (UI/UX Configuration)
 Admin có thể tùy chỉnh giao diện hiển thị cho User trên Lowca App ngay tại CMS.
 
-### Phần A: Visual & Header (Kích thích thị giác)
+#### Phần A: Visual & Header (Kích thích thị giác)
 * **Hero Image:** Ảnh banner quà tặng (vd: Tượng danh lam thắng cảnh).
 * **Countdown Timer:** Tự động hiển thị đồng hồ đếm ngược dựa trên thời gian sự kiện.
 * **Exclusivity Badge:** Hiển thị nhãn "Dành riêng cho Thành viên Bạc/Vàng".
 
-### Phần B: Tracking & Progress (Theo dõi tiến độ)
+#### Phần B: Tracking & Progress (Theo dõi tiến độ)
 * **Trang Progress:** Khi User nhấn vào Banner sẽ dẫn tới trang theo dõi nhiệm vụ cá nhân.
 * **Thanh tiến độ (Progress Bar):** Hiển thị trực quan theo node. 
     * *Ví dụ: Yêu cầu 3 quán -> 3 vòng tròn check-list. Node nào xong sẽ sáng xanh.*
 * **Status Label:** Text động (vd: "Bạn đã hoàn thành 1/3 quán phong cách #LịchSử").
 
-### Phần C: Hướng dẫn & Điều hướng (Instruction & Map)
+#### Phần C: Hướng dẫn & Điều hướng (Instruction & Map)
 * **Thuật toán đề xuất:** Tự động hiển thị danh sách các quán thỏa mãn `Scope` (Tag/Area) để User nhấn vào chỉ đường ngay.
 * **Nút Action động:** Thay đổi theo `Action_Type` khi User ở trang Vendor:
     - `Check-in`: Hiện nút **"Chụp ảnh & Chia sẻ"**.
     - `Review`: Hiện nút **"Viết cảm nhận"**.
     - `Payment`: Hiện nút **"Đặt món ngay"**.
 
-### Phần D: Thông tin phần thưởng (Reward Info)
+#### Phần D: Thông tin phần thưởng (Reward Info)
 * **Stock Label:** Hiển thị số lượng còn lại theo thời gian thực (Tạo hiệu ứng FOMO).
 * **Mechanism Label:** Hiển thị cơ chế nhận quà (vd: "Dành cho 100 người nhanh nhất").
 
----
-
-## 4. Kiểm soát & Phát hành (Launch Control)
+### Bước 4. Kiểm soát & Phát hành (Launch Control)
 1.  **Preview Mode:** Admin xem trước giao diện dưới góc nhìn User (Mobile view).
 2.  **Schedule Launch:** Đặt lịch phát hành tự động.
 3.  **Real-time Edit:** Cho phép chỉnh sửa nội dung/logic ngay cả khi sự kiện đang diễn ra.
 
 ---
 
-## 5. Tài liệu tham khảo
+## 3. Tài liệu tham khảo
 - [Rule Engine Workflow Diagram](https://whimsical.com/minh-s-workspace7334/rule-engine-flexible-YMgf6DVnjXkeoHe8pDkEGn)
 
 ---
 
-## 6. Socratic Gate (Các Business Rules cần làm rõ với Dev):
+## 4. Socratic Gate (Các Business Rules cần làm rõ với Dev):
 **Câu hỏi hay gặp**:
 ---
 1. **Validation Trigger:** Sự kiện (Event) nào được coi là "Hoàn thành"? (Ví dụ: Nhiệm vụ "Đặt 1 đơn", thì quest hoàn thành lúc user *vừa thanh toán xong*, hay lúc *nhận hàng thành công*, hay lúc *hoàn tất review*?).
@@ -167,9 +163,9 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 **💡 Ghi chú cho Dev:** Cần xây store riêng biệt để lưu trữ các phần quà và database trạng thái xu đang có cấp nhật theo thời gian thực (Real-time progress) thay vì chỉ lưu kết quả cuối cùng, 
 
 ---
-## 7. Tham khảo UI/UX đề xuất layout:
+## 5. Tham khảo UI/UX đề xuất layout:
 
-### 7.1. ADMIN DASHBOARD (Desktop View)
+### 5.1. ADMIN DASHBOARD (Desktop View)
 **Mục tiêu:** Cấu hình hệ thống Rule-Engine theo dạng Form-Builder.
 
 ---
@@ -191,7 +187,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-### 7.2. USER APP INTERFACE (Mobile View)
+### 5.2. USER APP INTERFACE (Mobile View)
 **Mục tiêu:** Tạo trải nghiệm Game- hóa, thúc đẩy User thực hiện nhiệm vụ.
 
 ### A. Screen: Banner thông báo nhiệm vụ
@@ -216,7 +212,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-### 7.3. FRONTEND TECHNICAL SPEC (Dành cho Dev)
+### 5.3. FRONTEND TECHNICAL SPEC (Dành cho Dev)
 
 ### Component State Schema
 | Component | Props | States |
@@ -232,7 +228,7 @@ Dựa trên hành vi của Gen Z và đặc thù F&B đường phố, các loạ
 
 ---
 
-### 7.4. MOCK DATA
+### 5.4. MOCK DATA
 ```
 {
   "quest_id": "LC_SAIGON_01",
